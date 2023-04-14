@@ -15,15 +15,18 @@ We organize the replication package into three file folders:
 
 Our code is based on the following packages and versions:
 * Python: 3.10.6
-* Selenium: 4.4.0
-* pyautogui: 0.9.53
 * Numpy: 1.23.2
 * Pandas: 1.4.3
 * Sqlite3: 2.6.0
-* Kmedoids: 0.3.3
-* cliffs_delta: 1.0.0
 * Scipy: 1.9.3
-* R: 4.2.2
+* Simpledorff: 
+* NLTK:
+* Gensim:
+* Tqdm:
+* Spacy:
+* PyLDAvis:
+* Matplotlib:
+* Seaborn:
 
 # Experiment
 This part contains code for our main experiment in collecting the extension information from the Chrome Web Store, selecting representative extensions, and measuring the performance changes of the representative extensions. All code could be found under the experiment folder.

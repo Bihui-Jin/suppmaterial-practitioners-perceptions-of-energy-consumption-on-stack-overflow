@@ -1,6 +1,6 @@
 # suppmaterial-practitioners-perceptions-of-energy-consumption-on-stack-overflow
 Supplemental materials for the paper "How do Practitioners Perceive Energy Consumption on Stack Overflow?".
-https://zenodo.org/badge/627998097.svg
+[![DOI](https://zenodo.org/badge/627998097.svg)](https://zenodo.org/badge/latestdoi/627998097)
 
 # Introduction
 We organize the replication package into three file folders:

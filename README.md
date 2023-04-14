@@ -38,7 +38,7 @@ This part contains code for processing the dataset and analyzing the clean data.
   
   For example, use ``RQ1.ipynb`` and ``RQ3.ipynb`` to perform analysis can obtain the results for RQ1 and RQ3, respectively. 
   
-  Scripts under folder RQ2 is used to（1）validate the LDA results using the manual labels (i.e., determine a threshold); and (2) perform analysis for RQ2 and acquire the results for RQ3.
+  Scripts under folder RQ2 is used to (1) validate the LDA results using the manual labels (i.e., determine a threshold); and (2) perform analysis for RQ2 and acquire the results for RQ3.
 
 # Results
 This part contains the output data from our main experiments. All output files could be found under the Results folder.

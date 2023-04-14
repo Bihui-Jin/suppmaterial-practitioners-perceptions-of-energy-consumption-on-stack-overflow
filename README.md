@@ -14,89 +14,47 @@ We organize the replication package into three file folders:
 3. Results: this folder contains the extension information stored in database, the clustering result in an excel file, extension selection steps in an excel file, installation packages of extensions, raw measurement data, and saved linear mixed effects models for our paper;
 
 Our code is based on the following packages and versions:
-* Python: 
-* Numpy: 
-* Pandas: 
-* Sqlite3: 
-* Scipy: 
-* Simpledorff: 
-* NLTK:
-* Gensim:
-* Tqdm:
-* Spacy:
-* PyLDAvis:
-* Matplotlib:
-* Seaborn:
-* Operator:
-* Sklearn:
-* Functools:
-* Re:
+* Python: 8.7.0
+* Numpy: 1.22.0
+* Pandas: 1.4.3
+* Sqlite3: 3.40.0
+* Simpledorff: 0.0.2
+* NLTK: 3.8.1
+* Gensim: 4.3.0
+* Tqdm: 4.64.1
+* PyLDAvis: 2.1.2
+* Matplotlib: 3.5.1
+* Seaborn: 0.11.2
+* Sklearn: 1.2.0
 
+# Analyses
+This part contains code for processing the dataset and analyzing the clean data. The materials are introduced in two parts: Pre-processing and RQs. All code could be found under the Analyses folder.
 
-# Experiment
-This part contains code for our main experiment in collecting the extension information from the Chrome Web Store, selecting representative extensions, and measuring the performance changes of the representative extensions. All code could be found under the experiment folder.
-
-1. Crawler script
-
-	This script (``collect.py``) is an automated script used to collect information of all extensions in the Chrome Web Store.
-
-2. Extension Selection
-
-	This script (``selecting representative extensions.ipynb``) guides the process of selecting extensions step by step.
-
-3. Measurement
-
-	This script (``measure.py``) is used to monitor the changes of the browser performance in terms of the page load time, the page load energy consumption, and the stabilized energy consumption.
-
-# Analysis
-This part contains code and materials for processing the dataset. The materials are introduced in two parts: Performance Evaluation (for RQs 1 and 2) and Linear Mixed Effects Models (for RQ3). All code could be found under the preprocessing folder.
-
-  ## Performance Evaluation
-  This part contains code for processing the measured raw data (for RQ1 and RQ2). The script ``performance evaluation.ipynb`` guides to process the raw data step by step and exports the processed result as an excel that will be used for the Linear Mixed-Effects Model in RQ3. Specifically, this script consists of three parts:
-  
-    1. Normalization
-
-    2. Statistical analysis
-      
-    3. Performance change ratio
+  ## Preprocessing
+  This part contains code for determining the optimal number of topics and generating keywords of topics and memberships for each topic in a post. The scripts ``LDA optimize topic number.ipynb`` and ``LDA keywords and topic memberships.ipynb`` guide to process the data step by step. 
     
-  ## Linear Mixed-Effects Models
-  This part contains the code for constructing the linear mixed-effects model in RQ3. 
+  ## RQs
+  This part contains the code for analyzing the dataset in each RQ. 
   
-  Use ``correlation and redundancy.R`` to perform correlation and redundancy analysis for the fixed effects. 
+  For example, use ``RQ1.ipynb`` and ``RQ3.ipynb`` to perform analysis can obtain the results for RQ1 and RQ3, respectively. 
   
-  ``helper.ipynb`` is used to determine the best converge random effects (e.g., (1|random) and (random1|random2) ). 
-  
-  Following the steps, input the result from ``helper.ipynb`` to ``buildHelp.R`` or ``buildHelp2.R`` to automatically filter the converged variables. 
-  
-  Lastly, using ``builder.R`` to conduct a stepwise elimination to obtain the optimal formula.
-The defined optimal formula is required to use ``lmer4`` to construct model again and use ``Anova`` and ``fixef`` provied in ``car`` to find the results and effect. ``Summary(model)`` may be useful as well.
+  Scripts under folder RQ2 is used to（1）validate the LDA results using the manual labels (i.e., determine a threshold); and (2) perform analysis for RQ2 and acquire the results for RQ3.
 
 # Results
-This part contains the output data from our main experiments. All output files could be found under the results folder.
-This folder contains the extension information stored in database, the clustering result in an excel file, extension selection steps in an excel file, installation packages of extensions, raw measurement data, and saved linear mixed effects models for our paper;
+This part contains the output data from our main experiments. All output files could be found under the Results folder.
+This folder contains the post information stored in database, preliminary labeling results by two annotator and a specialist in excel files, labeled 277 results (intention + topic) in an excel file, remaining 708 posts, details of posts in an excel file, and saved LDA models.
 
-1. Extension information
+1. Post information and details
 
-	The collected information of all extensions in the Chrome Web Store are presented in the forms of SQL and database, which can be found in ``extensions.sql`` and ``plugin.db``.
+	The collected information of all verified posts are presented in the form of database, which can be found in ``title-body.db``. The post information is also presented in the form of excel. ``posts.xlsx`` contains post details, such as question Score, ViewCount, AcceptedAnswerId, AnswerCount, CommentCount, FavoriteCount, comment information, Answer information. ``post-integrated.xlsx`` is the first sheet of ``posts.xlsx``.
 
-2. The result of clustering extensions
+2. The details of manually labels
 
-	The output file (``kmedoids.xlsx``) contains the clustering result by K-medoid clustering algorithm.
-
-3. The details of manually selecting extensions
-
-	The output file (``extension selection steps.xlsx``) contains the process of selecting representative extensions with reasons provided.
-
-4. Installation packages of extensions
-
-	All candidate extensions (representative + discarded) are presented in folder crx. The installation packages of extensions are named by the extension ids. The folder name under crx (e.g., 1 and 2) is related to the cluter. For example, the selected extensions that are clutered to cluster 1, can be found in crx -> 1.
+	Labels for selecting energy consumption-related posts are from three excel files, Namely: ``posts-rq1-Jin.xlsx``, ``posts-rq1-liu.xlsx``, and ``posts-differences.xlsx``. ``posts-rq1-Jin.xlsx`` is labeled by the first author of the paper, ``posts-rq1-liu.xlsx`` is labeled by a master's student major in Computer Engineering, and the disagreement between two annotators are listed in ``posts-differences.xlsx`` and is label by a specialist.
 	
-5. Raw data
-
-	Our measurements to the browser performance can be found under the folder - raw performance data. ``Free.txt`` contains the measurements for the extension-free mode. The file ``full.txt`` contains the measurements for the fully loaded mode.
+	``verify.xlsx`` contains the munual labels for the intentions and topics of each of 277 posts and is labeled by the first author of the paper and a professionalist major in Software Engineering. ``Remaining of 708 manually verified energy-related SO posts.xlsx`` contains the remaining 708 energy consumption-related posts. 
 	
-6. model results
+3. Model results
 
-	Our linear mixed effects models can be found in the folder - saved models. To load the model, ``robustlmm`` function in R is required. Run ``readRDS("page load time.rds")`` to load the model in local.
+	Our LDA models can be found in the folder - Saved LDA Models. To load the model, ``models.LdaModel.load()`` function is required. Run ``models.LdaModel.load('lda_model2')``, for example, to load the model in local.
  

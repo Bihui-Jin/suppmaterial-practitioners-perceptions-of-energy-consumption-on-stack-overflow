@@ -1,5 +1,5 @@
 # suppmaterial-practitioners-perceptions-of-energy-consumption-on-stack-overflow
-Supplemental materials for paper "How do Practitioners Perceive Energy Consumption on Stack Overflow?".
+Supplemental materials for the paper "How do Practitioners Perceive Energy Consumption on Stack Overflow?".
 
 # Introduction
 We organize the replication package into three file folders:

@@ -14,11 +14,11 @@ We organize the replication package into three file folders:
 3. Results: this folder contains the extension information stored in database, the clustering result in an excel file, extension selection steps in an excel file, installation packages of extensions, raw measurement data, and saved linear mixed effects models for our paper;
 
 Our code is based on the following packages and versions:
-* Python: 3.10.6
-* Numpy: 1.23.2
-* Pandas: 1.4.3
-* Sqlite3: 2.6.0
-* Scipy: 1.9.3
+* Python: 
+* Numpy: 
+* Pandas: 
+* Sqlite3: 
+* Scipy: 
 * Simpledorff: 
 * NLTK:
 * Gensim:
@@ -27,6 +27,11 @@ Our code is based on the following packages and versions:
 * PyLDAvis:
 * Matplotlib:
 * Seaborn:
+* Operator:
+* Sklearn:
+* Functools:
+* Re:
+
 
 # Experiment
 This part contains code for our main experiment in collecting the extension information from the Chrome Web Store, selecting representative extensions, and measuring the performance changes of the representative extensions. All code could be found under the experiment folder.
